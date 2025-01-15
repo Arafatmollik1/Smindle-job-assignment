@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\HandleOrderRequest;
 
 class OrderController extends Controller
 {
-    public function __invoke(Request $request)
+    public function __invoke(HandleOrderRequest $request)
     {
-        dd('Order with basket');
+
     }
 }
