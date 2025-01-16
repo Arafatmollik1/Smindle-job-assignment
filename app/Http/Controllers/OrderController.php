@@ -25,10 +25,13 @@ class OrderController extends Controller
             return response()->json(['message' => 'Order has been placed successfully']);
 
         } catch (TypeError $e) {
+            Log::debug($e->getMessage());
+
             return response()->json(['error' => 'Invalid data type provided, please check your input'], 400);
         } catch (Exception $e) {
-            return response()->json(['error' => 'Order creation failed, please try again later'.$e->getMessage()], 500);
-        }
+            Log::debug($e->getMessage());
 
+            return response()->json(['error' => 'Order creation failed, please try again later'], 500);
+        }
     }
 }
