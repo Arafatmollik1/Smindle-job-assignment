@@ -51,7 +51,7 @@ There is a Job configured in this app which runs asynchronously. To run the job,
 ## API Endpoints
 
 
-**Endpoint**: `GET http://localhost/api/v1/oder-with-basket`
+**Endpoint**: `POST http://localhost/api/v1/oder-with-basket`
 
 **Request Body**:
 ```json
