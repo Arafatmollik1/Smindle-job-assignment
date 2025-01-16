@@ -24,15 +24,21 @@ Follow these steps to set up the project:
    cp .env.example .env
    ```
 
-4. Build and start the Docker containers:
+4. Generate Application Keys:
+    ```bash
+    php artisan key:generate
+    ```
+
+5. Build and start the Docker containers:
    ```bash
    ./vendor/bin/sail up -d
    ```
 
+Note: The application is now running on `http://localhost`. You can use either MySQL or SQLite as the database.
+The docker containers are already configured to use MySQL. If you want to use SQLite, you can change the `DB_CONNECTION` value in the `.env` file to `sqlite`.
 ## Queue Workers
+There is a Job configured in this app which runs asynchronously. To run the job, you need to start a queue worker.
 
-
-Start a queue worker:
 ```bash
 ./vendor/bin/sail artisan queue:work
 ```
