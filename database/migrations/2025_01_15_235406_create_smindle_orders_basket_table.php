@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('smindle_orders_basket', function (Blueprint $table) {
+        Schema::create('smindle_orders_baskets', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('order_id'); // Foreign key to smindle_orders table
             $table->string('name', 255);
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('smindle_orders_basket');
+        Schema::dropIfExists('smindle_orders_baskets');
     }
 };
