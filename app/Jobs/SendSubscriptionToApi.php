@@ -19,6 +19,7 @@ class SendSubscriptionToApi implements ShouldQueue
 
     public function handle(): void
     {
+        $url = config('services.third_party_api.url');
         try {
             $payload = [
                 'ProductName' => $this->productName,
@@ -26,7 +27,7 @@ class SendSubscriptionToApi implements ShouldQueue
                 'Timestamp' => Carbon::now()->toDateTimeString(),
             ];
 
-            $response = Http::post('https://very-slow-api.com/orders', $payload);
+            $response = Http::post($url, $payload);
 
             if ($response->successful()) {
                 Log::debug("Subscription for {$this->productName} has been successfully sent.");

@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+
+    //Custom url by Smindle
+    'third_party_api' => [
+        'url' => env('THIRD_PARTY_API_URL', 'https://very-slow-api.com/orders'),
+    ],
+
 ];
