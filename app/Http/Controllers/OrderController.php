@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\SendSubscriptionAction;
 use App\DTO\SmindleOrderDTO;
 use App\Http\Requests\HandleOrderRequest;
 use App\Models\SmindleOrder;
@@ -21,6 +22,8 @@ class OrderController extends Controller
             $order = SmindleOrder::create($orderDTO->toOrderArray());
 
             $order->basket()->createMany($orderDTO->toBasketArray());
+
+            (new SendSubscriptionAction())->execute($orderDTO->toBasketArray());
 
             return response()->json(['message' => 'Order has been placed successfully']);
 
