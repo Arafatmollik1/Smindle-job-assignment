@@ -2,7 +2,7 @@
 
 namespace App\Actions;
 
-use App\Jobs\SendSubscriptionToApi;
+use App\Jobs\TestRabbitMqJob;
 
 class SendSubscriptionAction
 {
@@ -10,7 +10,7 @@ class SendSubscriptionAction
     {
         foreach ($basketItems as $item) {
             if ($item['type'] === 'subscription') {
-                SendSubscriptionToApi::dispatch($item['name'], $item['price']);
+                TestRabbitMqJob::dispatch($item);
             }
         }
     }
